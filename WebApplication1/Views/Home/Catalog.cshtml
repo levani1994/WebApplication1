@@ -1,0 +1,126 @@
+﻿@model IEnumerable<WebApplication1.Models.Product>
+@{
+    ViewBag.Title = "Catalog";
+}
+
+<!-- Button trigger modal -->
+<button type="button" style="margin-top:20px;" class="btn btn-primary" id="add" data-toggle="modal" data-target="#exampleModal">
+    პროდუქტის დამატება
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">პროდუქტის დამატება</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <input class="form-control" id="ProductName" type="text" placeholder="სახელი" />
+                </div>
+                <div class="form-group">
+                    <input class="form-control" id="ProductPrice" type="number"  step="0.1"  placeholder="ფასი" />
+                </div>
+
+                <div class="form-group">
+                    <p id="MessageContent" style="color:red;"></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="CloseBtn" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="PriceBtn">შენახვა</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<table class="table table-bordered" style="margin-top:20px;">
+    <tr>
+        <th>id</th>
+        <th>სახელი</th>
+        <th>ფასი</th>
+        <th></th>
+    </tr>
+
+
+    @foreach (var item in Model)
+    {
+    <tr data-productId="@item.ID">
+        <td>@item.ID</td>
+        <td>@item.Name</td>
+        <td>@(item.Price)$</td>
+        <td>
+            <button data-id="@item.ID" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">წაშლა</button>
+            <button data-id="@item.ID" class="btn btn-default edit-button" data-toggle="modal" data-target="#editModal">შეცვლა</button>
+        </td>
+    </tr>
+
+
+    }
+</table>
+
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">ნამდვილად გსურთ წაშლა?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+               ჩანაწერს ვეღარ აღადგენთ!
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="deleteModal" data-dismiss="modal">დახურვა</button>
+                <button type="button" class="btn btn-danger" id="delete">წაშლა</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">პროდუქტის დამატება</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <input class="form-control" id="ProductIDForEdit" type="text"  readonly/>
+
+                </div>
+                <div class="form-group">
+                    <input class="form-control" id="ProductNameForEdit" type="text" placeholder="სახელი" />
+
+                </div>
+                <div class="form-group">
+                    <input class="form-control" id="ProductPriceForEdit" type="number" step="0.1" placeholder="ფასი" />
+
+                </div>
+
+                <div class="form-group">
+                    <p id="MessageContent" style="color:red;"></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="CloseBtn" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" id="editButton">შეცვლა</button>
+            </div>
+        </div>
+    </div>
+</div>

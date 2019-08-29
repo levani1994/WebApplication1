@@ -1,0 +1,24 @@
+﻿
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+<form method="post" action="/Home/Create" enctype="multipart/form-data">
+    <div class="form-group">
+        <input class="form-control" type="text" name="ProductName" placeholder="სახელი" />
+    </div>
+
+    <div class="form-group">
+        <input class="form-control" type="number" step="0.01" name="ProductPrice" placeholder="ფასი" />
+    </div>
+    <div class="form-group">
+        <input class="form-control" type="file" name="PhotoFile"/>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="დამატება" />
+    </div>
+</form>
+

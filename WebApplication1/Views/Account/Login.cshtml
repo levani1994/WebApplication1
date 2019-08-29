@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+<form action="/Account/Login" method="post">
+    <div class="form-group">
+        <input class="form-control" type="email" name="Email" placeholder="შეიყვანეთ ელ.ფოსტის მისამატთი" />
+    </div>
+    <div class="form-group">
+        <input id="PasswordInput" class="form-control" type="password" name="Password" placeholder="შეიყვანეთ პაროლი" />
+    </div>
+    <div class="form-group">
+      <span id="PasswordTypeToggle" class="glyphicon glyphicon-eye-open"></span>
+    </div>
+
+    <div class="form-group">
+        <input class="btn btn-success" type="submit" value="შესვლა" />
+
+    </div>
+
+    <a href="~/Account/Registration">რეგისტრაცია</a>
+
+
+    <p style="color:red">@ViewBag.error</p>
+</form>
+
+<form action="/Account/PasswordRecover" method="get">
+    <div class="form-group">
+        <input class=" btn btn-success" type="submit" value="პაროლის აღდგენა" />
+
+    </div>
+</form>

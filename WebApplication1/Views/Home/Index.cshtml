@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    var user = (WebApplication1.Models.User)Session["user"];
+}
+
+<h2>გამარჯობა @ViewBag.name</h2>
+@if (user != null)
+{
+    <a href="/Account/Login">სისტემიდან გასვლა</a>
+}
